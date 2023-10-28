@@ -1,4 +1,3 @@
-import allure
 import pytest
 
 from tests.api.status_code_steps import status_code_check
@@ -26,10 +25,12 @@ class TestReqResUser:
         status_code, get_user_obj = get_user_by_id(api_url_endpoint, user_obj.id)
         status_code_check(status_code, 200)
 
-        status_code, update_user_obj_patch = update_user_by_patch(api_url_endpoint, user_obj.id, update_user_name_patch, update_user_job_patch)
+        status_code, update_user_obj_patch = update_user_by_patch(api_url_endpoint, user_obj.id, update_user_name_patch,
+                                                                  update_user_job_patch)
         status_code_check(status_code, 200)
 
-        status_code, update_user_obj_put = update_user_by_put(api_url_endpoint, user_obj.id, update_user_name_put, update_user_job_put)
+        status_code, update_user_obj_put = update_user_by_put(api_url_endpoint, user_obj.id, update_user_name_put,
+                                                              update_user_job_put)
         status_code_check(status_code, 200)
 
         status_code = delete_user_by_id(api_url_endpoint, user_obj.id)
