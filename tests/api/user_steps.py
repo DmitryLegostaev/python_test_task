@@ -9,72 +9,39 @@ from tests.api.models.user_model import *
 
 
 @allure.step("Create user. POST")
-def create_user(name: str, job: str, expected_status_code: int = 201):
-    path = "/api/users/"
-    base_url = "https://reqres.in/"     # TODO replace with dynamic
-
-    response = requests.post(urljoin(base_url, path), create_or_update_user_data_template(name, job))
-    response_status_code = response.status_code
-
-    assert response_status_code == expected_status_code
+def create_user(url: str, name: str, job: str):
+    response = requests.post(url, create_or_update_user_data_template(name, job))
 
     json_data = json.loads(response.text)
-    return CreatedUser(**json_data)
+    return response.status_code, CreatedUser(**json_data)
 
 
 @allure.step("Get user info by user id. GET")
-def get_user_by_id(user_id: str, expected_status_code: int = 200):
-    path = "/api/users/"
-    base_url = "https://reqres.in/"     # TODO replace with dynamic
-    print(urljoin(urljoin(base_url, path), user_id))
-
-    response = requests.get(urljoin(urljoin(base_url, path), user_id))
-    response_status_code = response.status_code
-
-    assert response_status_code == expected_status_code
+def get_user_by_id(url: str, user_id: str):
+    response = requests.get(urljoin(url, user_id))
 
     json_data = json.loads(response.text)
-    return ExistingUser(**json_data["data"])
+    return response.status_code, ExistingUser(**json_data["data"])
 
 
 @allure.step("Update user by user id. PATCH")
-def update_user_by_patch(user_id: str, name: str, job: str, expected_status_code: int = 200):
-    path = "/api/users/"
-    base_url = "https://reqres.in/"     # TODO replace with dynamic
-
-    print(urljoin(urljoin(base_url, path), user_id))
-
-    response = requests.patch(urljoin(urljoin(base_url, path), user_id), create_or_update_user_data_template(name, job))
-    response_status_code = response.status_code
-
-    assert response_status_code == expected_status_code
+def update_user_by_patch(url: str, user_id: str, name: str, job: str):
+    response = requests.patch(urljoin(url, user_id), create_or_update_user_data_template(name, job))
 
     json_data = json.loads(response.text)
-    return UpdatedUser(**json_data)
+    return response.status_code, UpdatedUser(**json_data)
 
 
 @allure.step("Update user by user id. PUT")
-def update_user_by_put(user_id: str, name: str, job: str, expected_status_code: int = 200):
-    path = "/api/users/"
-    base_url = "https://reqres.in/"     # TODO replace with dynamic
-    print(urljoin(urljoin(base_url, path), user_id))
-
-    response = requests.put(urljoin(urljoin(base_url, path), user_id), create_or_update_user_data_template(name, job))
-    response_status_code = response.status_code
-
-    assert response_status_code == expected_status_code
+def update_user_by_put(url: str, user_id: str, name: str, job: str):
+    response = requests.put(urljoin(url, user_id), create_or_update_user_data_template(name, job))
 
     json_data = json.loads(response.text)
-    return UpdatedUser(**json_data)
+    return response.status_code, UpdatedUser(**json_data)
 
 
 @allure.step("Delete user by user id. DELETE")
-def delete_user_by_id(user_id: str, expected_status_code: int = 204):
-    path = "/api/users/"
-    base_url = "https://reqres.in/"     # TODO replace with dynamic
-    print(urljoin(urljoin(base_url, path), user_id))
+def delete_user_by_id(url: str, user_id: str):
+    response = requests.delete(urljoin(url, user_id))
 
-    response = requests.delete(urljoin(urljoin(base_url, path), user_id))
-    response_status_code = response.status_code
-
-    assert response_status_code == expected_status_code
+    return response.status_code

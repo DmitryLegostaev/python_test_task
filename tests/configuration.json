@@ -1,4 +1,5 @@
 {
-  "ApiUrlEndpoint": "https://reqres.in/",
+  "ApiUrlBaseUrl": "https://reqres.in/",
+  "ApiUrlPath": "/api/users/",
   "UiUrlEndpoint": "https://qa.awarasleep.com/"
 }
