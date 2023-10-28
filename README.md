@@ -1,1 +1,36 @@
-# python_test_task
+# AQA Engineer test task
+
+Introduction
+The test task for the position of Automation QA Engineer consists of 3 parts and is designed to
+test the key professional knowledge and skills for this position. Please, use Python
+programming language to make it.
+# UI test
+
+Please create a UI test:
+
+Steps:
+1. Open https://qa.awarasleep.com/ -> check the page is opened
+2. Click the “Shop & Save” button on the Hero Banner -> check you are on /mattress
+3. Add the mattress to the cart -> Check the mattress has been added to the cart
+
+
+# API test
+Create a API test with CRUD operations around the User flow using the following Portal:
+https://reqres.in/
+
+Steps:
+1. Create a User
+2. Get Single User by ID (already existing #12)
+3. Update user by Patch method
+4. Update user by Put method
+5. DELETE User by ID (already existing #12)
+
+For each step make a response status and response body checks. It is a fake API and the data
+will not be added in reality. That means you can’t check Add User -> Get User By ID.
+
+# Additional tasks
+1. Create a Repository on GitHub and allocate the testing code there.
+2. Provide instructions on how to execute tests (please include README.md file).
+3. Provide a simple tool to review results (Allure, etc)
+4. CI/CD the automation in CircleCI. Run tests on each commit. Uploading the test artifacts
+would be a plus.
