@@ -48,7 +48,8 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 1. Download the repo
 2. Create new python virtual environment (recommended to use Python 3.9 or higher)
 3. Install packages listed in the requirements.txt file
-4. Run pytest from root of the project using the environment created in previous steps
+4. Make sure browser specified in pylenium.json is installed in your system
+5. Run pytest from root of the project using the environment created in previous steps
 
 ### How to generate and view allure report (Windows)
 1. Include the following arguments to a pytest run (point 4 from previous list) "--alluredir=./allure-results"
