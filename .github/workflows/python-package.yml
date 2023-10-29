@@ -35,6 +35,8 @@ jobs:
     - name: Test with pytest
       run: |
         pytest --alluredir=./allure-results
+    - name: Debug dir
+      run: ls
 
   publish:
     needs: build
@@ -55,6 +57,9 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
+
+      - name: Debug dir
+        run: ls
 
       - name: Build test report
         uses: simple-elf/allure-report-action@v1.7
