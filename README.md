@@ -42,6 +42,7 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 ## Notes
 1. There is a requirement in the task to use CircleCI as CI/CD tool, however, as been discussed during the interview, usage of CircleCI is not a strict requirement, so I decided to chose GitHub Workflows for this task by multiple reasons
 2. Some brief "how-to" run and publish the results on local pc is added, but details are missing intentionally, as the expected way to run tests is by CI/CD
+3. pylenium is used as a selenium wrapper in UI tests. It requires to conftest.py auto-generated stored in root of the repo. It contains some pep8 issues, and excluded from a flake8 lint
 
 ## Manual usage
 ### How to run the tests:
