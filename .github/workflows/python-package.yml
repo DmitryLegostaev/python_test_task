@@ -34,6 +34,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Install chrome
       uses: browser-actions/setup-chrome@v1
+    - name: Output installed chrome version
       run: chrome --version
     - name: Test with pytest
       run: pytest --alluredir=./allure-results
