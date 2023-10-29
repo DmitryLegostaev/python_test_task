@@ -1,8 +1,8 @@
 import pytest
 
-from tests.api.status_code_steps import status_code_check
-from tests.api.user_check_steps import check_created_user_data, check_updated_user_data, check_existing_user_data
-from user_crud_steps import *
+from tests.api.steps.status_code_steps import status_code_check
+from tests.api.steps.user_check_steps import check_created_user_data, check_updated_user_data, check_existing_user_data
+from tests.api.steps.user_crud_steps import *
 
 
 class TestReqResUser:
