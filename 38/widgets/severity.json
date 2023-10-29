@@ -1,0 +1,1 @@
+[{"uid":"c44499bec45ec8fb","name":"Create, update and delete user","time":{"start":1698600744083,"stop":1698600746284,"duration":2201},"status":"passed","severity":"normal"},{"uid":"67fdd0fbf6dbc6f2","name":"Add mattress to cart by banner on Main page","time":{"start":1698600746313,"stop":1698600768492,"duration":22179},"status":"passed","severity":"normal"}]
