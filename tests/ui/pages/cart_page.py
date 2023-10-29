@@ -13,5 +13,3 @@ class CartPage:
 
     def is_opened(self):
         self.py.get(self.__order_summary_field_locator).should().be_visible()
-
-
