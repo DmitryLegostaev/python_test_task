@@ -38,7 +38,7 @@ jobs:
     - name: Store allure results
       uses: actions/upload-artifact@v3
       with:
-        name: allure-results
+        name: allure-results ${GITHUB_RUN_ID}
         path: allure-results
         retention-days: 1
     - name: Debug dir
@@ -57,10 +57,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 #      - uses: actions/checkout@v3
+      - name: Debug ids
+        run: |
+          echo $GITHUB_RUN_ATTEMPT
+          echo ${{github.run_id}}
+          echo ${GITHUB_RUN_ID}
+          echo ${GITHUB_RUN_NUMBER}
+          echo ${{github.GITHUB_RUN_ID}}
+          echo ${{github.RUN_NUMBER }}
       - name: Download latest results
         uses: actions/download-artifact@v3
         with:
-          name: allure-results
+          name: allure-results ${GITHUB_RUN_ID}
+          path: allure-results
 
       - name: Set up JDK
         uses: actions/setup-java@v3
@@ -85,7 +94,7 @@ jobs:
         with:
           gh_pages: gh-pages
           allure_history: allure-history
-          allure_results: build/allure-results
+          allure_results: allure-results
 
       - name: Publish test report
         uses: peaceiris/actions-gh-pages@v3
