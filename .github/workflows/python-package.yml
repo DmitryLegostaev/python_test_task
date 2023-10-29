@@ -7,7 +7,7 @@ on:
   [push]
 
 jobs:
-  build:
+  build-and-test:
 
     runs-on: ubuntu-latest
     strategy:
@@ -41,29 +41,11 @@ jobs:
         name: allure-results ${GITHUB_RUN_ID}
         path: allure-results
         retention-days: 1
-    - name: Debug dir
-      run: ls
-    - name: Debug ids
-      run: |
-        echo $GITHUB_RUN_ATTEMPT
-        echo ${{github.run_id}}
-        echo ${GITHUB_RUN_ID}
-        echo ${GITHUB_RUN_NUMBER}
-        echo ${{github.GITHUB_RUN_ID}}
-        echo ${{github.RUN_NUMBER }}
 
-  publish:
-    needs: build
+  publish-report:
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - name: Debug ids
-        run: |
-          echo $GITHUB_RUN_ATTEMPT
-          echo ${{github.run_id}}
-          echo ${GITHUB_RUN_ID}
-          echo ${GITHUB_RUN_NUMBER}
-          echo ${{github.GITHUB_RUN_ID}}
-          echo ${{github.RUN_NUMBER }}
       - name: Download latest results
         uses: actions/download-artifact@v3
         with:
@@ -83,9 +65,6 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-
-      - name: Debug dir
-        run: ls
 
       - name: Build test report
         uses: simple-elf/allure-report-action@v1.7
