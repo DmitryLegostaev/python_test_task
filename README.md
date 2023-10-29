@@ -39,13 +39,18 @@ will not be added in reality. That means you can’t check Add User -> Get User 
    would be a plus.
 
 # Repo overview
-## How to run the tests:
+## Notes
+1. There is a requirement in the task to use CircleCI as CI/CD tool, however, as been discussed during the interview, usage of CircleCI is not a strict requirement, so I decided to chose GitHub Workflows for this task by multiple reasons
+2. Some brief "how-to" run and publish the results on local pc is added, but details are missing intentionally, as the expected way to run tests is by CI/CD
+
+## Manual usage
+### How to run the tests:
 1. Download the repo
 2. Create new python virtual environment (recommended to use Python 3.9 or higher)
 3. Install packages listed in the requirements.txt file
 4. Run pytest from root of the project using the environment created in previous steps
 
-## How to generate and view allure report (Windows)
+### How to generate and view allure report (Windows)
 1. Include the following arguments to a pytest run (point 4 from previous list) "--alluredir=./allure-results"
 2. Make sure Java is installed and JAVA_HOME added to env vars
 3. Download allure zip from official website
@@ -66,4 +71,4 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 ### Known limitations: 
 1. GitHub pages publishing could take up to 10 mins to display the results
 2. Need to change the approach to store different trends for different branches
-3. The workflow is designed to run on a single python package and needs changes in order to provide readable cross-package results
+3. The workflow is designed to run on a single python package and needs changes in order to provide readable cross-package test results
