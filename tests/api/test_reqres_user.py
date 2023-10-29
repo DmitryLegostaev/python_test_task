@@ -41,3 +41,5 @@ class TestReqResUser:
 
         status_code = delete_user_by_id(api_url_endpoint, user_obj.id)
         status_code_check(status_code, 204)
+
+        assert False, "Debug assert false"
