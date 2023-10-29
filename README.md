@@ -5,7 +5,7 @@ The test task for the position of Automation QA Engineer consists of 3 parts and
 test the key professional knowledge and skills for this position. Please, use Python
 programming language to make it.
 
-# UI test
+### UI test
 
 Please create a UI test:
 
@@ -15,7 +15,7 @@ Steps:
 2. Click the “Shop & Save” button on the Hero Banner -> check you are on /mattress
 3. Add the mattress to the cart -> Check the mattress has been added to the cart
 
-# API test
+### API test
 
 Create a API test with CRUD operations around the User flow using the following Portal:
 https://reqres.in/
@@ -31,25 +31,44 @@ Steps:
 For each step make a response status and response body checks. It is a fake API and the data
 will not be added in reality. That means you can’t check Add User -> Get User By ID.
 
-# Additional tasks
-
+### Additional tasks
 1. Create a Repository on GitHub and allocate the testing code there.
 2. Provide instructions on how to execute tests (please include README.md file).
 3. Provide a simple tool to review results (Allure, etc)
 4. CI/CD the automation in CircleCI. Run tests on each commit. Uploading the test artifacts
    would be a plus.
 
-# How to run the tests:
+# Repo overview
+## Notes
+1. There is a requirement in the task to use CircleCI as CI/CD tool, however, as been discussed during the interview, usage of CircleCI is not a strict requirement, so I decided to chose GitHub Workflows for this task by multiple reasons
+2. Some brief "how-to" run and publish the results on local pc is added, but details are missing intentionally, as the expected way to run tests is by CI/CD
 
+## Manual usage
+### How to run the tests:
 1. Download the repo
 2. Create new python virtual environment (recommended to use Python 3.9 or higher)
 3. Install packages listed in the requirements.txt file
 4. Run pytest from root of the project using the environment created in previous steps
 
-# How to generate and view allure report (Windows)
-
+### How to generate and view allure report (Windows)
 1. Include the following arguments to a pytest run (point 4 from previous list) "--alluredir=./allure-results"
 2. Make sure Java is installed and JAVA_HOME added to env vars
 3. Download allure zip from official website
 4. Unzip it
-5. From root of the project run allure.bat with full path specified
+5. From the root of the project run allure.bat serve command. Make sure it is collecting "allure-results" dir
+
+## Workflow on GitHub
+1. Current report with trends and history available here https://dmitrylegostaev.github.io/python_test_task
+2. Currently, the same report is used for tests for all branches
+3. Max reports count = 20
+4. Reports is located on gh-pages branch
+
+### Usage:
+1. Push a commit to any branch
+2. First GitHub workflow job will analyze and test the code, upload the allure results as artifact to GH storage
+3. Second GitHub workflow job will download the latest allure results, download history, generate report and publish it to GitHub Pages
+
+### Known limitations: 
+1. GitHub pages publishing could take up to 10 mins to display the results
+2. Need to change the approach to store different trends for different branches
+3. The workflow is designed to run on a single python package and needs changes in order to provide readable cross-package test results
