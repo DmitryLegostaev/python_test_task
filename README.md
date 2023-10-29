@@ -42,13 +42,15 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 ## Notes
 1. There is a requirement in the task to use CircleCI as CI/CD tool, however, as been discussed during the interview, usage of CircleCI is not a strict requirement, so I decided to chose GitHub Workflows for this task by multiple reasons
 2. Some brief "how-to" run and publish the results on local pc is added, but details are missing intentionally, as the expected way to run tests is by CI/CD
+3. pylenium is used as a selenium wrapper in UI tests. It requires to conftest.py auto-generated stored in root of the repo. It contains some pep8 issues, and excluded from a flake8 lint
 
 ## Manual usage
 ### How to run the tests:
 1. Download the repo
 2. Create new python virtual environment (recommended to use Python 3.9 or higher)
 3. Install packages listed in the requirements.txt file
-4. Run pytest from root of the project using the environment created in previous steps
+4. Make sure browser specified in pylenium.json is installed in your system
+5. Run pytest from root of the project using the environment created in previous steps
 
 ### How to generate and view allure report (Windows)
 1. Include the following arguments to a pytest run (point 4 from previous list) "--alluredir=./allure-results"

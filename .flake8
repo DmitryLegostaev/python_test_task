@@ -1,0 +1,6 @@
+[flake8]
+exclude =
+    conftest.py
+    venv
+    allure-report
+    allure-results

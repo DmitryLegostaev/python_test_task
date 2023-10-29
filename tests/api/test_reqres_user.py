@@ -1,8 +1,10 @@
 import pytest
+import allure
 
 from tests.api.steps.status_code_steps import status_code_check
 from tests.api.steps.user_check_steps import check_created_user_data, check_updated_user_data, check_existing_user_data
-from tests.api.steps.user_crud_steps import *
+from tests.api.steps.user_crud_steps import create_user, update_user_by_patch, get_user_by_id, update_user_by_put, \
+    delete_user_by_id
 
 
 class TestReqResUser:

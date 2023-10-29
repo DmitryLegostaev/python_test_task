@@ -5,7 +5,7 @@ import requests
 from requests.compat import urljoin
 
 from tests.api.data_templates.user_data_templates import create_or_update_user_data_template
-from tests.api.models.user_model import *
+from tests.api.models.user_model import CreatedUser, ExistingUser, UpdatedUser
 
 
 @allure.step("Create user. POST")
