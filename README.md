@@ -62,6 +62,7 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 2. Currently, the same report is used for tests for all branches
 3. Max reports count = 20
 4. Reports is located on gh-pages branch
+5. All workflow runs could be found here https://github.com/DmitryLegostaev/python_test_task/actions
 
 ### Usage:
 1. Push a commit to any branch
