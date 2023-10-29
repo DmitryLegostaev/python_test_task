@@ -1,0 +1,1 @@
+ERROR    root:conftest.py:255 Failed to take screenshot on test failure.
