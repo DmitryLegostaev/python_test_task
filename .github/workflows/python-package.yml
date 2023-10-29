@@ -7,8 +7,8 @@ on:
   [push]
 
 jobs:
-  build-and-test:
-
+  lint-and-test:
+    name: Lint and test
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -42,11 +42,12 @@ jobs:
         path: allure-results
         retention-days: 1
 
-  publish-report:
-    needs: build-and-test
+  publish-allure-report:
+    name: Generate and publish allure report
+    needs: lint-and-test
     runs-on: ubuntu-latest
     steps:
-      - name: Download latest results
+      - name: Download latest allure results
         uses: actions/download-artifact@v3
         with:
           name: allure-results ${GITHUB_RUN_ID}
