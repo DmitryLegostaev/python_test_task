@@ -46,6 +46,7 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 4. "main" branch of the repo is protected by approvals and checks.
 5. There are two different allure step types for UI and API test, and test-specific steps from the UI test could be reworked similar to API test steps to provide better re-usability.
 6. There are no guidelines and rules specified for steps naming, but they could be added in the real project.
+7. Some automation features and best-practice patterns are not used in the project due to its simplicity.
 
 ## Manual usage
 ### How to run the tests:
