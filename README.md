@@ -40,9 +40,13 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 
 # Repo overview
 ## Notes
-1. There is a requirement in the task to use CircleCI as CI/CD tool, however, as been discussed during the interview, usage of CircleCI is not a strict requirement, so I decided to chose GitHub Workflows for this task by multiple reasons
-2. Some brief "how-to" run and publish the results on local pc is added, but details are missing intentionally, as the expected way to run tests is by CI/CD
-3. pylenium is used as a selenium wrapper in UI tests. It requires to conftest.py auto-generated stored in root of the repo. It contains some pep8 issues, and excluded from a flake8 lint
+1. There is a requirement in the task to use CircleCI as CI/CD tool, however, as been discussed during the interview, usage of CircleCI is not a strict requirement, so I decided to choose GitHub Workflows for this task by multiple reasons.
+2. Some brief "how-to" run and publish the results on local pc is added, but details are missing intentionally, as the expected way to run tests is by CI/CD.
+3. "pylenium" is chosen as a selenium wrapper in UI tests to simplify common automation actions during selenium usage. It requires to conftest.py auto-generated stored in root of the repo. These files contain some pep8 issues, and they are excluded from a flake8 lint.
+4. "main" branch of the repo is protected by approvals and checks.
+5. There are two different allure step types for UI and API test, and test-specific steps from the UI test could be reworked similar to API test steps to provide better re-usability.
+6. There are no guidelines and rules specified for steps naming, but they could be added in the real project.
+7. Some automation features and best-practice patterns are not used in the project due to its simplicity.
 
 ## Manual usage
 ### How to run the tests:
@@ -68,10 +72,12 @@ will not be added in reality. That means you can’t check Add User -> Get User 
 
 ### Usage:
 1. Push a commit to any branch
-2. First GitHub workflow job will analyze and test the code, upload the allure results as artifact to GH storage
+2. First GitHub workflow job will lint and test the code, upload the allure results as artifact to GitHub storage
 3. Second GitHub workflow job will download the latest allure results, download history, generate report and publish it to GitHub Pages
 
 ### Known limitations: 
 1. GitHub pages publishing could take up to 10 mins to display the results
 2. Need to change the approach to store different trends for different branches
 3. The workflow is designed to run on a single python package and needs changes in order to provide readable cross-package test results
+4. Once GitHub monthly quota for CI/CD agents usage is reached, need to set up and spin local agents, and make some changes to workflow file to use these local agents
+5. Probably, the repo report should not exceed the GitHub Pages limits, however, need to keep the limits in mind if the project(real project) will expand in the future
